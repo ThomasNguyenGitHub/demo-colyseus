@@ -1,0 +1,24 @@
+{
+  "name": "colyseus-client-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "start:watch": "nodemon . -e js,html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "colyseus"
+  ],
+  "author": "anph@athena.studio",
+  "license": "ISC",
+  "dependencies": {
+    "colyseus.js": "^0.15.10",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

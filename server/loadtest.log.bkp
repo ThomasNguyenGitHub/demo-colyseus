@@ -1,0 +1,43 @@
+[10/12/2023, 11:29:04 AM] @colyseus/loadtest
+endpoint: wss://c3-gameplay--zajls1f.proudpond-8890b9fe.eastasia.azurecontainerapps.io/ui/playground/rooms
+roomName: block
+numClients: 20000
+logLevel: all
+output: /Users/thomasLee/Desktop/lb-colyseus-sample/server/loadtest.log
+[10/12/2023, 11:29:05 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:06 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:07 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:07 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:08 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:08 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:09 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:10 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:11 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:11 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:12 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:12 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:13 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:14 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:14 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:15 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:15 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:16 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:16 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:17 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:18 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:18 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:19 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:20 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:20 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:21 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:21 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:21 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:22 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:23 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:23 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:24 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:24 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:29:25 AM] Finished. Summary:
+    Successful connections: 6
+    Failed connections: 33
+    Total errors: 33

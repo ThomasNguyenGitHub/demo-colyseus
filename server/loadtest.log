@@ -1,0 +1,13 @@
+[10/12/2023, 11:31:02 AM] @colyseus/loadtest
+endpoint: wss://c3-gameplay--zajls1f.proudpond-8890b9fe.eastasia.azurecontainerapps.io
+roomName: block
+numClients: 3
+logLevel: all
+output: /Users/thomasLee/Desktop/lb-colyseus-sample/server/loadtest.log
+[10/12/2023, 11:31:03 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:31:04 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:31:05 AM] ServerError: seat reservation expired.
+[10/12/2023, 11:31:46 AM] Finished. Summary:
+    Successful connections: 0
+    Failed connections: 3
+    Total errors: 3

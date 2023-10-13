@@ -1,0 +1,160 @@
+<html>
+  <head>
+    <style>
+      .client > .err {
+        font-weight: bolder;
+        color: red;
+      }
+    </style>
+    <script src="./scripts/colyseus.js"></script>
+    <script>
+      var roomChats = [];
+      // const SERVER_URL = "ws://colyseus.srv.local:2567";
+      const SERVER_URL = "ws://localhost:56013";
+
+      function main() {
+        let clientObjs = document.getElementsByClassName(`client`);
+        console.log("Num client: " + clientObjs.length);
+        for (let i = 0; i < clientObjs.length; i++) {
+          clientObjs[i].querySelector('.connect').click();
+        }
+      }
+
+      function connect(clientId) {
+        console.log('connect....');
+        let client = new Colyseus.Client(SERVER_URL);
+        const roomId = `room_${Math.floor(clientId / 3)}`;
+        console.log(`client: ${clientId} join room ${roomId} ....`);
+        client
+          .joinOrCreate(roomId)
+          .then(roomInit(clientId))
+          .catch((e) => {
+            console.log("JOIN ERROR", e);
+            let elem = document.querySelector(`#client_${clientId} > .err`);
+            elem.innerHTML += 'err, ';
+          });
+      }
+
+      function roomInit(clientId) {
+        return function (room) {
+          console.log(room.sessionId, "joined", room.name);
+          room.onStateChange((state) => {
+            // console.log(room.name, "has new state:", state);
+          });
+          room.onMessage("__playground_message_types", (message) => {
+            // console.log(client, "received on", room.name, message);
+          });
+          room.onLeave((code) => {
+            console.log(`#client_${clientId} left ${room.name}!`);
+            let elem = document.querySelector(`#client_${clientId} > .err`);
+            elem.innerHTML += 'leaved, ';
+          });
+
+          room.onMessage("recieve_chat", (message) => {
+            console.log(`[#client_${clientId}] received on ${room.name} from ${message.from}: ${message.msg}`);
+            let childNode = document.createElement("li");
+            childNode.textContent = `[client_${message.from}][${room.id}] ${message.msg}`;
+
+            let elem = document.querySelector(`#client_${clientId} > .chat_history`);
+            elem.appendChild(childNode);
+          });
+
+          room.onError((code, message) => {
+            console.log(`#client_${clientId} couldn't join ${room.name}!`);
+          });
+
+          let elem = document.querySelector(`#client_${clientId} > .err`);
+          elem.innerHTML = '';
+
+          console.log("Room init..", room.name);
+          room.clientId = clientId;
+          roomChats[clientId] = room;
+        };
+      }
+
+      function sendMsg(clientId) {
+        // console.log(this);
+        let inputMsg = document.getElementById("input_msg_" + clientId);
+        console.log("Send msg:", inputMsg.value);
+        if (roomChats[clientId]) {
+          roomChats[clientId].send("send_chat", { from: clientId, msg: inputMsg.value });
+        } else {
+          console.log(`room [${clientId}] not exists`, roomChats);
+        }
+      }
+    </script>
+  </head>
+  <body onload="main()">
+    <h1>Hello ExpressJS</h1>
+    <div class="client" id="client_0">
+      <h3>Client 0</h3>
+      <ul class="chat_history">
+        <input type="text" name="input_msg" id="input_msg_0" /><br />
+      </ul>
+      <button name="send_msg" onclick="sendMsg(0)">Send</button>
+      <button class="connect" onclick="connect(0)">Connect</button>
+      <span class="err"></span>
+      <hr />
+    </div>
+    <div class="client" id="client_1">
+      <h3>Client 1</h3>
+      <ul class="chat_history">
+        <input type="text" name="input_msg" id="input_msg_1" /><br />
+      </ul>
+      <button name="send_msg" onclick="sendMsg(1)">Send</button>
+      <button class="connect" onclick="connect(1)">Connect</button>
+      <span class="err"></span>
+      <hr />
+    </div>
+    <div class="client" id="client_2">
+      <h3>Client 2</h3>
+      <ul class="chat_history">
+        <input type="text" name="input_msg" id="input_msg_2" /><br />
+      </ul>
+      <button name="send_msg" onclick="sendMsg(2)">Send</button>
+      <button class="connect" onclick="connect(2)">Connect</button>
+      <span class="err"></span>
+      <hr />
+    </div>
+    <div class="client" id="client_3">
+      <h3>Client 3</h3>
+      <ul class="chat_history">
+        <input type="text" name="input_msg" id="input_msg_3" /><br />
+      </ul>
+      <button name="send_msg" onclick="sendMsg(3)">Send</button>
+      <button class="connect" onclick="connect(3)">Connect</button>
+      <span class="err"></span>
+      <hr />
+    </div>
+    <div class="client" id="client_4">
+      <h3>Client 4</h3>
+      <ul class="chat_history">
+        <input type="text" name="input_msg" id="input_msg_4" /><br />
+      </ul>
+      <button name="send_msg" onclick="sendMsg(4)">Send</button>
+      <button class="connect" onclick="connect(4)">Connect</button>
+      <span class="err"></span>
+      <hr />
+    </div>
+    <div class="client" id="client_5">
+      <h3>Client 5</h3>
+      <ul class="chat_history">
+        <input type="text" name="input_msg" id="input_msg_5" /><br />
+      </ul>
+      <button name="send_msg" onclick="sendMsg(5)">Send</button>
+      <button class="connect" onclick="connect(5)">Connect</button>
+      <span class="err"></span>
+      <hr />
+    </div>
+    <div class="client" id="client_6">
+      <h3>Client 6</h3>
+      <ul class="chat_history">
+        <input type="text" name="input_msg" id="input_msg_6" /><br />
+      </ul>
+      <button name="send_msg" onclick="sendMsg(6)">Send</button>
+      <button class="connect" onclick="connect(6)">Connect</button>
+      <span class="err"></span>
+      <hr />
+    </div>
+  </body>
+</html>
